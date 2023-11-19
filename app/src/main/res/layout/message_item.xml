@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/chat_text_item"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_round"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginVertical="5dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/message_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:gravity="center_vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/date"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginVertical="0dp"
+            tools:visibility="gone"/>
+
+
+<!--        TODO file size; rounded corners-->
+        <ImageView
+            android:id="@+id/message_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/date"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:adjustViewBounds="true"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/message_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/date"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:adjustViewBounds="true"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/play_triangle"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_baseline_play_arrow_24"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="@id/message_video"
+            app:layout_constraintBottom_toBottomOf="@id/message_video"
+            app:layout_constraintLeft_toLeftOf="@id/message_video"
+            app:layout_constraintRight_toRightOf="@id/message_video"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/audio_container"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="5dp"
+            app:layout_constraintBottom_toTopOf="@id/date"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <ImageView
+                android:id="@+id/play_button"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/play_white"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Chronometer
+                android:id="@+id/playback_timer"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textColor="#7FCEFF"
+                android:textSize="12dp"
+                app:layout_constraintLeft_toLeftOf="@id/plug1"
+                app:layout_constraintRight_toRightOf="@id/plug1"
+                app:layout_constraintBottom_toBottomOf="@id/plug1"
+                app:layout_constraintTop_toTopOf="@id/plug1"
+                />
+
+            <TextView
+                android:id="@+id/audio_length"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textColor="#7FCEFF"
+                android:textSize="12dp"
+                android:text="00:00"
+                app:layout_constraintLeft_toLeftOf="@id/plug1"
+                app:layout_constraintRight_toRightOf="@id/plug1"
+                app:layout_constraintBottom_toBottomOf="@id/plug1"
+                app:layout_constraintTop_toTopOf="@id/plug1"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/plug1"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textColor="#7FCEFF"
+                android:layout_marginEnd="5dp"
+                android:textSize="12dp"
+                android:text="00:00"
+                app:layout_constraintLeft_toRightOf="@id/play_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:visibility="invisible"/>
+
+
+            <SeekBar
+                android:id="@+id/seekbar_audio"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:elevation="6dp"
+                android:progressBackgroundTint="@color/white"
+                android:layout_marginEnd="5dp"
+                android:progressTint="@color/white"
+                android:thumbTint="@color/blue"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/plug1"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="11dp"
+            android:text="11:32 Feb 11 2023"
+            android:gravity="center_vertical"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/file_container"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="5dp"
+            app:layout_constraintBottom_toTopOf="@id/date"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="5dp"
+            android:visibility="gone">
+
+            <ImageButton
+                android:id="@+id/file_button"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/textnote"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/file_name"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:layout_marginStart="5dp"
+                android:inputType=""
+                android:textSize="13dp"
+                tools:text="Homework"
+                app:layout_constraintLeft_toRightOf="@id/file_button"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/file_size"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/file_size"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:layout_marginEnd="5dp"
+                android:textSize="12dp"
+                tools:text="495 MB"
+                app:layout_constraintLeft_toLeftOf="@id/file_name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/file_name"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
